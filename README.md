@@ -21,7 +21,7 @@ sudo apt-get install libatlas-base-dev
 git clone https://github.com/senyoltw/custom-hotword-for-aiy-voicekit
 
 # copy snowboy module and sample program.
-cp -ipr cp -ipr custom-hotword-for-aiy-voicekit/mod AIY-projects-python/src/
+cp -ipr custom-hotword-for-aiy-voicekit/mod AIY-projects-python/src/
 cp -ip custom-hotword-for-aiy-voicekit/assistant_grpc_demo_snowboy.py AIY-projects-python/src/examples/voice/
 ```
 
