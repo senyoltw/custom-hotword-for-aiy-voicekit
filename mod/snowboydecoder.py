@@ -17,8 +17,6 @@ RESOURCE_FILE = os.path.join(TOP_DIR, "resources/common.res")
 DETECT_DING = os.path.join(TOP_DIR, "resources/ding.wav")
 DETECT_DONG = os.path.join(TOP_DIR, "resources/dong.wav")
 
-interrupted = False
-
 class RingBuffer(object):
     """Ring buffer to hold audio from PortAudio"""
 
@@ -135,6 +133,9 @@ class HotwordDetector(object):
         :return: None
         """
         self._running = True
+
+        global interrupted
+        interrupted = False
 
         self._recorder.add_processor(self.ring_buffer)
 
