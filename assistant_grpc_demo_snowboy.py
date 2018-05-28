@@ -46,7 +46,7 @@ def main():
     with aiy.audio.get_recorder():
         while True:
             status_ui.status('ready')
-            print('Press the button and speak')
+            print('Speak own hotword and speak')
             #button.wait_for_press()
             detector.start()
             status_ui.status('listening')
