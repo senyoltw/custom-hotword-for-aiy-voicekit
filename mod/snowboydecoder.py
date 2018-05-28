@@ -8,9 +8,7 @@ import logging
 
 import aiy.audio
 
-logging.basicConfig()
 logger = logging.getLogger("snowboy")
-logger.setLevel(logging.INFO)
 TOP_DIR = os.path.dirname(os.path.abspath(__file__))
 
 RESOURCE_FILE = os.path.join(TOP_DIR, "resources/common.res")
