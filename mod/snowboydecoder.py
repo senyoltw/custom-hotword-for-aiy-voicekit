@@ -3,7 +3,6 @@
 import collections
 from . import snowboydetect
 import time
-import wave
 import os
 import logging
 
