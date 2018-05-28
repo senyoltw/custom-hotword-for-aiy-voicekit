@@ -17,6 +17,8 @@ RESOURCE_FILE = os.path.join(TOP_DIR, "resources/common.res")
 DETECT_DING = os.path.join(TOP_DIR, "resources/ding.wav")
 DETECT_DONG = os.path.join(TOP_DIR, "resources/dong.wav")
 
+interrupted = False
+
 class RingBuffer(object):
     """Ring buffer to hold audio from PortAudio"""
 
@@ -46,6 +48,25 @@ def play_audio_file(fname=DETECT_DING):
     :return: None
     """
     aiy.audio.play_wave(fname)
+
+def callbacks():
+    global interrupted
+    interrupted = True
+
+def callbacks_and_play_audio_file(fname=DETECT_DING):
+    """callback function to play a wave file and interrupted is true. By default it plays
+    a Ding sound.
+
+    :param str fname: wave file name
+    :return: None
+    """
+    aiy.audio.play_wave(fname)
+    global interrupted
+    interrupted = True
+
+def interrupt_callback():
+    global interrupted
+    return interrupted
 
 class HotwordDetector(object):
     """
@@ -94,8 +115,8 @@ class HotwordDetector(object):
         self.ring_buffer = RingBuffer(
             self.detector.NumChannels() * self.detector.SampleRate() * 5)
 
-    def start(self, detected_callback=play_audio_file,
-              interrupt_check=lambda: False,
+    def start(self, detected_callback=callbacks,
+              interrupt_check=interrupt_callback,
               sleep_time=0.03):
         """
         Start the voice detector. For every `sleep_time` second it checks the
