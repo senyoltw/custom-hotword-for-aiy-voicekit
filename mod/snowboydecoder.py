@@ -115,7 +115,7 @@ class HotwordDetector(object):
 
     def start(self, detected_callback=callbacks,
               interrupt_check=interrupt_callback,
-              sleep_time=0.03):
+              sleep_time=0.02):
         """
         Start the voice detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call
