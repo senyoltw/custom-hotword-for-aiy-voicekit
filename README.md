@@ -29,6 +29,7 @@ cp -ip custom-hotword-for-aiy-voicekit/assistant_grpc_demo_snowboy.py AIY-projec
 
 ```
 cd AIY-voice-kit-python
+chmod a+x src/examples/voice/assistant_grpc_demo_snowboy.py
 src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/snowboy.umdl
 ```
 Say "snowboy" and talk your google assistant!
