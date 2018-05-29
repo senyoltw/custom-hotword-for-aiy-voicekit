@@ -78,7 +78,7 @@ src/examples/voice/assistant_grpc_demo_snowboy.py [hotword].umdl
 ```
 $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant_grpc_demo_snowboy.py
 --- src/examples/voice/assistant_grpc_demo.py	2018-04-14 06:05:49.000000000 +0900
-+++ src/examples/voice/assistant_grpc_demo_snowboy.py	2018-05-29 03:27:42.107101876 +0900
++++ src/examples/voice/assistant_grpc_demo_snowboy.py	2018-05-29 10:44:28.486009208 +0900
 @@ -21,6 +21,16 @@
  import aiy.audio
  import aiy.voicehat
@@ -96,7 +96,7 @@ $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant
  logging.basicConfig(
      level=logging.INFO,
      format="[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
-@@ -31,12 +41,14 @@
+@@ -31,12 +41,15 @@
      status_ui = aiy.voicehat.get_status_ui()
      status_ui.status('starting')
      assistant = aiy.assistant.grpc.get_assistant()
@@ -108,11 +108,12 @@ $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant
              status_ui.status('ready')
 -            print('Press the button and speak')
 -            button.wait_for_press()
++            #print('Press the button and speak')
 +            print('Speak own hotword and speak')
 +            #button.wait_for_press()
 +            detector.start()
              status_ui.status('listening')
              print('Listening...')
              text, audio = assistant.recognize()
-pi@raspberrypi:~/AIY-voice-kit-python $
+$
 ```
