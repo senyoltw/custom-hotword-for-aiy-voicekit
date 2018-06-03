@@ -1,8 +1,12 @@
 # custom-hotword-for-aiy-voicekit
-Snowboy API for AIY Voice Kit
+Snowboy API for AIY Voice Kit.    
+Replace your AIY Voice Kit hotword [OK. Google] to [alexa],[jarvis]...etc  
+You can easily replace your program.  
+See. [# diff original program(AIY Voice Kit Press button), snowboy wakeword program]
 
-# Before How to use
-Buy The AIY Voice Kit and complete the tutorial.
+# Before How to install
+Buy The AIY Voice Kit and complete the tutorial.  
+custom-hotword-for-aiy-voicekit use lowlevel api AIY Voice Kit.
 
 https://aiyprojects.withgoogle.com/voice/
 
@@ -30,40 +34,37 @@ cp -ip custom-hotword-for-aiy-voicekit/assistant_grpc_demo_snowboy.py AIY-projec
 ```
 cd AIY-voice-kit-python
 chmod a+x src/examples/voice/assistant_grpc_demo_snowboy.py
-src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/snowboy.umdl
+rc/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa_02092017.umdl
 ```
-Say "snowboy" and talk your google assistant!
+Say "alexa" and talk your google assistant!
 
 sample log
 ```
-pi@raspberrypi:~/AIY-voice-kit-python $ src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/snowboy.umdl
+pi@raspberrypi:~/AIY-voice-kit-python $ src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa_02092017.umdl
 /opt/aiy/projects-python/src/aiy/_drivers/_led.py:51: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
   GPIO.setup(channel, GPIO.OUT)
-[2018-05-29 03:27:47,216] INFO:recorder:started recording
+[2018-06-03 13:40:32,643] INFO:recorder:started recording
 Speak own hotword and speak
-[2018-05-29 03:27:48,858] INFO:snowboy:Keyword 1 detected at time: 2018-05-29 03:27:48
+[2018-06-03 13:40:35,289] INFO:snowboy:Keyword 1 detected at time: 2018-06-03 13:40:35
 Listening...
-[2018-05-29 03:27:52,702] INFO:speech:transcript: what
-[2018-05-29 03:27:52,707] INFO:speech:transcript: what's
-[2018-05-29 03:27:52,709] INFO:speech:transcript: what to
-[2018-05-29 03:27:52,711] INFO:speech:transcript: what is
-[2018-05-29 03:27:52,713] INFO:speech:transcript: what city
-[2018-05-29 03:27:52,715] INFO:speech:transcript: what did you
-[2018-05-29 03:27:52,717] INFO:speech:transcript: what is your
-[2018-05-29 03:27:52,719] INFO:speech:transcript: what did you want
-[2018-05-29 03:27:52,721] INFO:speech:transcript: what is your name
-[2018-05-29 03:27:52,722] INFO:speech:transcript: what  is your name
-[2018-05-29 03:27:52,725] INFO:speech:transcript: what  is your name
-[2018-05-29 03:27:52,727] INFO:speech:transcript: what is your name
-[2018-05-29 03:27:52,729] INFO:speech:event_type: 1
-[2018-05-29 03:27:52,735] INFO:speech:transcript: what is your name
-You said " what is your name "
+[2018-06-03 13:40:38,042] INFO:speech:transcript: What
+[2018-06-03 13:40:38,049] INFO:speech:transcript: What is
+[2018-06-03 13:40:38,051] INFO:speech:transcript: What is your
+[2018-06-03 13:40:38,053] INFO:speech:transcript: What is your ね
+[2018-06-03 13:40:38,055] INFO:speech:transcript: What is your name
+[2018-06-03 13:40:38,056] INFO:speech:transcript: What  is your name
+[2018-06-03 13:40:38,058] INFO:speech:transcript: What is  your name
+[2018-06-03 13:40:38,060] INFO:speech:transcript: What is your  name
+[2018-06-03 13:40:38,062] INFO:speech:event_type: 1
+[2018-06-03 13:40:38,067] INFO:speech:transcript: What is your name
+[2018-06-03 13:40:38,070] INFO:speech:transcript: What is your name
+You said " What is your name "
 Speak own hotword and speak
 ```
 
 # Make your own hotword
-Make your own hotword this site. 
-and download your voice kit [hotword].umdl
+Make your own hotword this site.   
+and download your voice kit [hotword].pmdl  
 (how to make your hotword by snowboy, google it ^^!)
 
 https://snowboy.kitt.ai/
@@ -72,10 +73,10 @@ and run program argument your hotword
 
 ```
 cd AIY-voice-kit-python
-src/examples/voice/assistant_grpc_demo_snowboy.py [hotword].umdl
+src/examples/voice/assistant_grpc_demo_snowboy.py [hotword].pmdl
 ```
 
-# diff original program(Press button), snowboy wakeword program
+# diff original program(AIY Voice Kit Press button), snowboy wakeword program
 ```
 $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant_grpc_demo_snowboy.py
 --- src/examples/voice/assistant_grpc_demo.py	2018-04-14 06:05:49.000000000 +0900
