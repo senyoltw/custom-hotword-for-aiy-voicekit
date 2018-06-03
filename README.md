@@ -34,30 +34,29 @@ cp -ip custom-hotword-for-aiy-voicekit/assistant_grpc_demo_snowboy.py AIY-projec
 ```
 cd AIY-voice-kit-python
 chmod a+x src/examples/voice/assistant_grpc_demo_snowboy.py
-rc/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa_02092017.umdl
+src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa/alexa_02092017.umdl
 ```
 Say "alexa" and talk your google assistant!
 
 sample log
 ```
-pi@raspberrypi:~/AIY-voice-kit-python $ src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa_02092017.umdl
+pi@raspberrypi:~/AIY-voice-kit-python $ src/examples/voice/assistant_grpc_demo_snowboy.py src/mod/resources/alexa/alexa_02092017.umdl
 /opt/aiy/projects-python/src/aiy/_drivers/_led.py:51: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
   GPIO.setup(channel, GPIO.OUT)
-[2018-06-03 13:40:32,643] INFO:recorder:started recording
+[2018-06-03 14:33:26,194] INFO:recorder:started recording
 Speak own hotword and speak
-[2018-06-03 13:40:35,289] INFO:snowboy:Keyword 1 detected at time: 2018-06-03 13:40:35
+[2018-06-03 14:33:28,634] INFO:snowboy:Keyword 1 detected at time: 2018-06-03 14:33:28
 Listening...
-[2018-06-03 13:40:38,042] INFO:speech:transcript: What
-[2018-06-03 13:40:38,049] INFO:speech:transcript: What is
-[2018-06-03 13:40:38,051] INFO:speech:transcript: What is your
-[2018-06-03 13:40:38,053] INFO:speech:transcript: What is your ね
-[2018-06-03 13:40:38,055] INFO:speech:transcript: What is your name
-[2018-06-03 13:40:38,056] INFO:speech:transcript: What  is your name
-[2018-06-03 13:40:38,058] INFO:speech:transcript: What is  your name
-[2018-06-03 13:40:38,060] INFO:speech:transcript: What is your  name
-[2018-06-03 13:40:38,062] INFO:speech:event_type: 1
-[2018-06-03 13:40:38,067] INFO:speech:transcript: What is your name
-[2018-06-03 13:40:38,070] INFO:speech:transcript: What is your name
+[2018-06-03 14:33:31,478] INFO:speech:transcript: What
+[2018-06-03 14:33:31,483] INFO:speech:transcript: What is
+[2018-06-03 14:33:31,485] INFO:speech:transcript: What is your
+[2018-06-03 14:33:31,487] INFO:speech:transcript: What is 4
+[2018-06-03 14:33:31,489] INFO:speech:transcript: What is よね
+[2018-06-03 14:33:31,491] INFO:speech:transcript: What is your name
+[2018-06-03 14:33:31,492] INFO:speech:transcript: What  is your name
+[2018-06-03 14:33:31,494] INFO:speech:transcript: What is  your name
+[2018-06-03 14:33:31,496] INFO:speech:event_type: 1
+[2018-06-03 14:33:31,501] INFO:speech:transcript: What is your name
 You said " What is your name "
 Speak own hotword and speak
 ```
@@ -80,7 +79,7 @@ src/examples/voice/assistant_grpc_demo_snowboy.py [hotword].pmdl
 ```
 $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant_grpc_demo_snowboy.py
 --- src/examples/voice/assistant_grpc_demo.py	2018-04-14 06:05:49.000000000 +0900
-+++ src/examples/voice/assistant_grpc_demo_snowboy.py	2018-05-29 10:44:28.486009208 +0900
++++ src/examples/voice/assistant_grpc_demo_snowboy.py	2018-06-03 14:31:40.356212421 +0900
 @@ -21,6 +21,16 @@
  import aiy.audio
  import aiy.voicehat
@@ -117,5 +116,5 @@ $ diff -u src/examples/voice/assistant_grpc_demo.py src/examples/voice/assistant
              status_ui.status('listening')
              print('Listening...')
              text, audio = assistant.recognize()
-$
+pi@raspberrypi:~/AIY-voice-kit-python $
 ```
