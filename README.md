@@ -2,7 +2,7 @@
 Snowboy API for AIY Voice Kit.    
 Replace your AIY Voice Kit hotword [OK. Google] to [alexa],[jarvis]...etc  
 You can easily replace your program.  
-See. [# diff original program(AIY Voice Kit Press button), snowboy wakeword program]
+See. [diff AIY Voice Kit Press button and own hotword program](#diff-original-programaiy-voice-kit-press-button-snowboy-wakeword-program)
 
 # Before How to install
 Buy The AIY Voice Kit and complete the tutorial.  
