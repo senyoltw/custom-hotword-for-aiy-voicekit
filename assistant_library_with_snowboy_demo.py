@@ -31,6 +31,15 @@ from aiy.assistant.library import Assistant
 import aiy.voicehat
 from google.assistant.library.event import EventType
 
+import mod.snowboydecoder as snowboydecoder
+
+if len(sys.argv) == 1:
+    print("Error: need to specify model name")
+    print("Usage: python demo.py your.model")
+    sys.exit(-1)
+
+model = sys.argv[1]
+
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
@@ -48,6 +57,7 @@ class MyAssistant(object):
 
     def __init__(self):
         self._task = threading.Thread(target=self._run_task)
+        self._hotword = threading.Thread(target=self._run_hotword)
         self._can_start_conversation = False
         self._assistant = None
 
@@ -57,6 +67,7 @@ class MyAssistant(object):
         Starts the assistant event loop and begin processing events.
         """
         self._task.start()
+        self._hotword.start()
 
     def _run_task(self):
         credentials = aiy.assistant.auth_helpers.get_assistant_credentials()
@@ -64,6 +75,16 @@ class MyAssistant(object):
             self._assistant = assistant
             for event in assistant.start():
                 self._process_event(event)
+
+    def _run_hotword(self):
+        detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
+        with aiy.audio.get_recorder():
+            while True:
+                if self._can_start_conversation:
+                   detector.start(detected_callback=self._on_button_pressed,
+                                  interrupt_check=lambda: not(self._can_start_conversation),
+                                  sleep_time=0.03)
+                   detector.terminate()
 
     def _process_event(self, event):
         status_ui = aiy.voicehat.get_status_ui()
