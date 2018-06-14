@@ -40,6 +40,7 @@ if len(sys.argv) == 1:
 
 model = sys.argv[1]
 
+logger = logging.getLogger("main")
 logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
@@ -87,6 +88,7 @@ class MyAssistant(object):
                    detector.terminate()
 
     def _process_event(self, event):
+        logger.debug(event)
         status_ui = aiy.voicehat.get_status_ui()
         if event.type == EventType.ON_START_FINISHED:
             status_ui.status('ready')
